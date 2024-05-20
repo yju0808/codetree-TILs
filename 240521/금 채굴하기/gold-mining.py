@@ -11,7 +11,7 @@ elements = []
 
 i = 0
 
-while get_cost(i) < n * n:
+while get_cost(i) <= n * n:
 
     dq = deque()
 

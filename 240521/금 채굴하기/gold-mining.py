@@ -11,7 +11,7 @@ elements = []
 
 i = 0
 
-while True:
+for i in range(n + 2):
 
     dq = deque()
 
@@ -40,9 +40,6 @@ while True:
                 dq.append((n_y, n_x, turn + 1))
 
     elements.append(visited)
-
-    if get_cost(i + 2) > n * n:
-        break
 
     i += 1
 

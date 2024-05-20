@@ -11,7 +11,7 @@ elements = []
 
 i = 0
 
-while get_cost(i) <= n * n:
+while True:
 
     dq = deque()
 
@@ -40,7 +40,13 @@ while get_cost(i) <= n * n:
                 dq.append((n_y, n_x, turn + 1))
 
     elements.append(visited)
+
+    if get_cost(i) > n * n:
+        break
+
     i += 1
+
+
 
 
 def is_valid_coord(y, x):
@@ -55,10 +61,15 @@ for i in range(n):
         for element in elements:
 
             coin_count = 0
+            element_count = 0
             for y, x in element:
-                if is_valid_coord(i + y, j + x) and board[i + y][j + x] == 1:
-                    coin_count += 1
-                
-            ans = max(ans, coin_count)
+                if is_valid_coord(i + y, j + x):
+                    element_count += 1
+
+                    if board[i + y][j + x] == 1:
+                        coin_count += 1
+            
+            if m * coin_count >= len(element):
+                ans = max(ans, coin_count)
 
 print(ans)

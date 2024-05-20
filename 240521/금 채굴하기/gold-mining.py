@@ -41,19 +41,15 @@ while True:
 
     elements.append(visited)
 
-    if get_cost(i) > n * n:
+    if get_cost(i + 2) > n * n:
         break
 
     i += 1
-
-
-
 
 def is_valid_coord(y, x):
     return 0 <= y < n and 0 <= x < n
 
 ans = 0
-
 
 for i in range(n):
     for j in range(n):

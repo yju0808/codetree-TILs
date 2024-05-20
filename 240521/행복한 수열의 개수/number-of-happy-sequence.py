@@ -29,7 +29,6 @@ for i in range(n):
 
         if board[j][i] != before:
             continuous_count = 1
-            
         else:
             continuous_count += 1
 
@@ -37,7 +36,7 @@ for i in range(n):
             happy_count += 1
             break
 
-        before = num
+        before = board[j][i]
 
         
 print(happy_count)

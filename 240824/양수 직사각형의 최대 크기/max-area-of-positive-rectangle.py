@@ -17,28 +17,23 @@ def get_score(y, x, h, w):
     for i in range(h):
         for j in range(w):
 
-            if not is_vaild_coord(y + i, x + j) or grid[y + i][x + j] < 0:
+            if not is_vaild_coord(y + i, x + j) or grid[y + i][x + j] <= 0:
                 return -1
 
-            result += 1
-
-    return result
+    return h * w
 
 
 ans = -1
 
 for i in range(n):
     for j in range(m):
-
-        result = 0
-
         for h in range(1, n + 1):
             for w in range(1, m + 1):
 
-                temp = get_score(i, j, h, w)
+                result = get_score(i, j, h, w)
 
-                if temp > 0 and temp > ans:
-                    ans = temp
+                if result > ans:
+                    ans = result
 
 
 

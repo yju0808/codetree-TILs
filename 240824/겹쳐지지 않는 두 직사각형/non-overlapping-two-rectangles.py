@@ -20,8 +20,7 @@ def get_score(y, x , h, w, checked, is_two):
 
             if not is_two:
                 checked.add((y + i, x + j))
-
-
+        
     return result
 
 
@@ -41,15 +40,9 @@ for i in range(n):
                     for j2 in range(m):
                         for h2 in range(1, n):
                             for w2 in range(1, m):
+                                
 
-                                result += get_score(i2, j2, h2, w2, checked, True)
-
-                                print(i, j, h, w)
-                                print(i2, j2, h2, w2)
-                                print(result)
-                                print('----')
-
-                                ans = max(result, ans)
+                                ans = max(result + get_score(i2, j2, h2, w2, checked, True), ans)
 
                 
 print(ans)

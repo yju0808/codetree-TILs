@@ -43,6 +43,8 @@ for i in range(n):
                             for w2 in range(1, m):
 
                                 result += get_score(i2, j2, h2, w2, checked, True)
+
+                                print(result)
                                 ans = max(result, ans)
 
                 

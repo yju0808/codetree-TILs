@@ -28,8 +28,8 @@ ans = -float('inf')
 
 for i in range(n):
     for j in range(m):
-        for h in range(1, n):
-            for w in range(1, m):
+        for h in range(1, n + 1):
+            for w in range(1, m + 1):
 
                 result = 0
                 checked = set()
@@ -38,9 +38,8 @@ for i in range(n):
 
                 for i2 in range(n):
                     for j2 in range(m):
-                        for h2 in range(1, n):
-                            for w2 in range(1, m):
-                                
+                        for h2 in range(1, n + 1):
+                            for w2 in range(1, m + 1):
 
                                 ans = max(result + get_score(i2, j2, h2, w2, checked, True), ans)
 

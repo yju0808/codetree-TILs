@@ -44,7 +44,11 @@ for i in range(n):
 
                                 result += get_score(i2, j2, h2, w2, checked, True)
 
+                                print(i, j, h, w)
+                                print(i2, j2, h2, w2)
                                 print(result)
+                                print('----')
+
                                 ans = max(result, ans)
 
                 

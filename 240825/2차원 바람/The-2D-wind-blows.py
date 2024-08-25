@@ -82,6 +82,10 @@ for _ in range(q):
 
     make_avg(r1, c1, r2, c2)
 
+    for i in range(n):
+        for j in range(m):
+            grid[i][j] = result_grid[i][j]
 
-for row in result_grid:
+
+for row in grid:
     print(*row)

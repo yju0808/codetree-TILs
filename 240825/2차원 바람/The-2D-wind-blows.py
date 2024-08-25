@@ -20,7 +20,7 @@ def rotate(r1, c1, r2, c2):
     for i in range(r2, r1, -1):
         grid[i][c2] = grid[i - 1][c2]
     
-    if is_valid_coord(r1 + 1, c1):
+    if is_valid_coord(r1 + 1, c2):
         grid[r1 + 1][c2] = temp
     
     temp = grid[r2][c1]

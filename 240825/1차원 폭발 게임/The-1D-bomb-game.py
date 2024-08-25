@@ -8,17 +8,19 @@ bombs_b = []
 while bombs_a:
 
     is_ended = True
-    count = 1
+    count = 0
     temp = bombs_a[0]
 
     while bombs_a:
         
         current = bombs_a.pop()
+        count += 1
 
         if current != temp:
             
-            if count >= m:
+            count -= 1
 
+            if count >= m:
                 while bombs_b and bombs_b[-1] == temp:
                     bombs_b.pop()
                 is_ended = False
@@ -28,8 +30,8 @@ while bombs_a:
             temp = current
                 
         else:
-            count += 1
             bombs_b.append(current)
+            
 
 
     

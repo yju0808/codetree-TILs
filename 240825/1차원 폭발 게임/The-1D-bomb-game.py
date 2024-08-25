@@ -14,23 +14,22 @@ while bombs_a:
     while bombs_a:
         
         current = bombs_a.pop()
-        count += 1
 
         if current != temp:
-            
-            count -= 1
 
             if count >= m:
                 while bombs_b and bombs_b[-1] == temp:
                     bombs_b.pop()
                 is_ended = False
-                count = 1
 
+                
+            count = 1
             bombs_b.append(current)
             temp = current
                 
         else:
             bombs_b.append(current)
+            count += 1
             
 
 

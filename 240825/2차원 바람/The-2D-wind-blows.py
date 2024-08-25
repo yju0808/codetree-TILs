@@ -33,7 +33,7 @@ def rotate(r1, c1, r2, c2):
     for i in range(r1, r2 - 1):
         grid[i][c1] = grid[i + 1][c1]
 
-    if is_valid_coord(r1 - 1, c2):
+    if is_valid_coord(r1 - 1, c1):
         grid[r2 - 1][c1] = temp
     
     
@@ -80,7 +80,7 @@ for _ in range(q):
         for j in range(m):
             result_grid[i][j] = grid[i][j]
 
-    #make_avg(r1, c1, r2, c2)
+    make_avg(r1, c1, r2, c2)
 
 
 for row in result_grid:

@@ -2,36 +2,41 @@ n, m, q = map(int, input().split())
 
 grid = [list(map(int, input().split())) for _ in range(n)]
 
+result_grid = [[0 for _ in range(m)] for _ in range(n)]
 
 
+for i in range(n):
+    for j in range(m):
+        result_grid[i][j] = grid[i][j]
 
 
 def rotate(r1, c1, r2, c2):
-
-
+    
     temp = grid[r1][c2]
-    for i in range(c2 - 1, c1, -1):
+    for i in range(c2, c1, -1):
         grid[r1][i] = grid[r1][i - 1]
-
+    
     temp2 = grid[r2][c2]
-    for i in range(r2 - 1, r1, -1):
+    for i in range(r2, r1, -1):
         grid[i][c2] = grid[i - 1][c2]
     
-    grid[r1][c2] = temp
-
-
+    if is_valid_coord(r1 + 1, c1):
+        grid[r1 + 1][c2] = temp
+    
     temp = grid[r2][c1]
     for i in range(c1, c2 - 1):
         grid[r2][i] = grid[r2][i + 1]
 
-    grid[r2][c2] = temp2
+    if is_valid_coord(r2, c2 - 1):
+        grid[r2][c2 - 1] = temp2
 
     for i in range(r1, r2 - 1):
         grid[i][c1] = grid[i + 1][c1]
 
-    grid[r1][c1] = temp
-
-
+    if is_valid_coord(r1 - 1, c2):
+        grid[r2 - 1][c1] = temp
+    
+    
 dy = [0, 1, 0, -1]
 dx = [1, 0, -1, 0]
 
@@ -51,12 +56,11 @@ def make_avg(r1, c1, r2, c2):
                 ny = i + dy[k]
                 nx = j + dx[k]
 
-                if is_valid_coord(y, x):
+                if is_valid_coord(ny, nx):
                     count += 1
                     new += grid[ny][nx]
             
-            grid[i][j] = new // count
-
+            result_grid[i][j] = int(new / count)
 
 
 
@@ -74,5 +78,5 @@ for _ in range(q):
     make_avg(r1, c1, r2, c2)
 
 
-for row in grid:
+for row in result_grid:
     print(*row)

@@ -50,17 +50,16 @@ for _ in range(q):
     down_d = d
 
     for i in range(r, 0, -1):
-        if (check(i, r - 1)):
+        if (check(i, i - 1)):
             up_d = reverse_map[up_d]
-            shift(r - 1, up_d)
+            shift(i - 1, up_d)
         else:
             break
 
     for i in range(r, n - 1):
-        if (check(r, r + 1)):
-            print(r)
+        if (check(i, i + 1)):
             down_d = reverse_map[down_d]
-            shift(r + 1, down_d)
+            shift(i + 1, down_d)
         else:
             break
 

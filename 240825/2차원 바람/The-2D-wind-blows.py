@@ -24,13 +24,13 @@ def rotate(r1, c1, r2, c2):
         grid[r1 + 1][c2] = temp
     
     temp = grid[r2][c1]
-    for i in range(c1, c2 - 1):
+    for i in range(c1, c2):
         grid[r2][i] = grid[r2][i + 1]
 
     if is_valid_coord(r2, c2 - 1):
         grid[r2][c2 - 1] = temp2
 
-    for i in range(r1, r2 - 1):
+    for i in range(r1, r2):
         grid[i][c1] = grid[i + 1][c1]
 
     if is_valid_coord(r2 - 1, c1):

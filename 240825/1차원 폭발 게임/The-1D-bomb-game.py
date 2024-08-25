@@ -5,13 +5,10 @@ bombs_a = [int(input()) for _ in range(n)]
 bombs_b = []
 
 
-while True:
+while bombs_a:
 
     is_ended = True
-
-    
     count = 0
-
     temp = bombs_a[0]
 
     while bombs_a:
@@ -25,7 +22,6 @@ while True:
                 while bombs_b and bombs_b[-1] == temp:
                     bombs_b.pop()
                 is_ended = False
-                
                 count = 1
 
             bombs_b.append(current)
@@ -37,16 +33,14 @@ while True:
 
 
     
-    if count >= m and bombs_b:
+    if count >= m:
         while bombs_b and bombs_b[-1] == temp:
                 bombs_b.pop()
+                
         is_ended = False
 
     while bombs_b:
         bombs_a.append(bombs_b.pop())
-
-    if not bombs_a:
-        is_ended = True
 
     if is_ended:
         break

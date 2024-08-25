@@ -80,7 +80,7 @@ for _ in range(q):
         for j in range(m):
             result_grid[i][j] = grid[i][j]
 
-    make_avg(r1, c1, r2, c2)
+    #make_avg(r1, c1, r2, c2)
 
 
 for row in result_grid:

@@ -1,19 +1,19 @@
 a = input()
 
 
-def encode(a):
+def encode(string):
 
-    temp = a[0]
+    temp = string[0]
 
     result = ''
     count = 0
 
-    for c in a:
+    for c in string:
 
         if c != temp:
-            result += c
+            result += temp
             result += str(count)
-            count = 0
+            count = 1
             temp = c
         else:
             count += 1
@@ -27,13 +27,12 @@ def encode(a):
 
 def shift(a, n):
     
-    after = ['' for _ in range(len(a))]
-
+    after = ['_' for _ in range(len(a))]
     for i in range(0, len(a) - n):
         after[i + n] = a[i]
 
     for i in range(0, n):
-        after[i] = a[len(a) - n + i - 1]
+        after[i] = a[len(a) - n + i]
 
     return "".join(after)
 
@@ -41,10 +40,8 @@ def shift(a, n):
 ans = float('inf')
 
 
-for i in range(len(a)):
-    
+for i in range(len(a) + 1):
     result = encode(shift(a, i))
     ans = min(ans, len(result))
-
 
 print(ans)

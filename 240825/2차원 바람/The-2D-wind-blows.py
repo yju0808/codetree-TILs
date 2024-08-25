@@ -75,7 +75,7 @@ for _ in range(q):
     r2 -= 1
 
     rotate(r1, c1, r2, c2)
-    make_avg(r1, c1, r2, c2)
+    #make_avg(r1, c1, r2, c2)
 
 
 for row in result_grid:

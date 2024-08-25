@@ -32,6 +32,32 @@ def rotate(r1, c1, r2, c2):
     grid[r1][c1] = temp
 
 
+dy = [0, 1, 0, -1]
+dx = [1, 0, -1, 0]
+
+
+def is_valid_coord(y, x):
+    return 0 <= y < n and 0 <= x < m
+
+def make_avg(r1, c1, r2, c2):
+
+    for i in range(r1, r2 + 1):
+        for j in range(c1, c2 + 1):
+
+            new = grid[i][j]
+            count = 1
+
+            for k in range(4):
+                ny = i + dy[k]
+                nx = j + dx[k]
+
+                if is_valid_coord(y, x):
+                    count += 1
+                    new += grid[ny][nx]
+            
+            grid[i][j] = new // count
+
+
 
 
 
@@ -43,3 +69,10 @@ for _ in range(q):
     c2 -= 1
     r1 -= 1
     r2 -= 1
+
+    rotate(r1, c1, r2, c2)
+    make_avg(r1, c1, r2, c2)
+
+
+for row in grid:
+    print(*row)

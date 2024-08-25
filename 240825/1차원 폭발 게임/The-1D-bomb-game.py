@@ -18,7 +18,7 @@ while bombs_a:
         if current != temp:
 
             if count >= m and bombs_b:
-                for i in range(m):
+                for i in range(count):
                     bombs_b.pop()
                 is_ended = False
 
@@ -35,7 +35,7 @@ while bombs_a:
 
     
     if count >= m and bombs_b:
-        for i in range(m):
+        for i in range(count):
                 bombs_b.pop()
 
         is_ended = False

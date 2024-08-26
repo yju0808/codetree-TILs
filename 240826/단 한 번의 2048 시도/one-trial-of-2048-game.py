@@ -1,8 +1,20 @@
-grid = [list(map(int, input().split())) for _ in range(4)]
+input_grid = [list(map(int, input().split())) for _ in range(4)]
+
+grid = [[] for _ in range(4)]
 
 dir_ = input()
 
 result_grid = [[0 for _ in range(4)] for _ in range(4)]
+
+
+for i in range(4):
+    for j in range(4):
+        if input_grid[i][j] != 0:
+            grid[i].append(input_grid[i][j])
+
+    while len(grid[i]) < 4:
+        grid[i].append(0)
+
 
 
 if dir_ == 'L':
@@ -13,21 +25,28 @@ if dir_ == 'L':
         temp = grid[i][0]
 
         for j in range(1, 4):
-            
-            if grid[i][j] == '0':
+
+            if grid[i][j] == 0:
+                break
+
+            if temp == None:
+                result_grid[i][index] = grid[i][j]
                 continue
+
 
             if grid[i][j] == temp:
                 result_grid[i][index] = temp * 2
                 index += 1
+                temp = None
                 
 
-            else:
+            elif grid[i][j] != temp:
                 result_grid[i][index] = temp
                 temp = grid[i][j]
                 index += 1
 
-        result_grid[i][index] = temp
+        if temp != None:
+            result_grid[i][index] = temp
 
 
 elif dir_ == 'R':

@@ -50,7 +50,7 @@ elif dir_ == 'R':
     
     for i in range(4):
 
-        keep = 3
+        keep = 0
         index = 3
         start_index = 3
 
@@ -126,7 +126,7 @@ elif dir_ == 'U':
 else:
     for j in range(4):
 
-        keep = 3
+        keep = 0
         index = 3
         start_index = 3
 

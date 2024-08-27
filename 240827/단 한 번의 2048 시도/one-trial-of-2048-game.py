@@ -110,18 +110,18 @@ elif dir_ == 'U':
                 keep = grid[i][j]
 
             elif current == keep:
-                result_grid[i][index] = current + keep
+                result_grid[index][j] = current + keep
                 index += 1
                 keep = 0
             
             else:
-                result_grid[i][index] = keep
+                result_grid[index][j] = keep
                 keep = current
                 index += 1
 
 
         if keep != 0:
-            result_grid[i][index] = keep
+            result_grid[index][j] = keep
 
 else:
     for j in range(4):
@@ -147,18 +147,18 @@ else:
                 keep = grid[i][j]
 
             elif current == keep:
-                result_grid[i][index] = current + keep
+                result_grid[index][j] = current + keep
                 index -= 1
                 keep = 0
             
             else:
-                result_grid[i][index] = keep
+                result_grid[index][j] = keep
                 keep = current
                 index -= 1
 
 
         if keep != 0:
-            result_grid[i][index] = keep
+            result_grid[index][j] = keep
 
 
 for row in result_grid:

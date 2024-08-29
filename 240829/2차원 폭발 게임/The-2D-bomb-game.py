@@ -37,6 +37,8 @@ def simul_gravity():
         for i in range(index - 1, -1, -1):
             grid[i][j] = 0
 
+
+
 def check_should_explo():
     for j in range(n):
 
@@ -61,8 +63,7 @@ def check_should_explo():
             return True
 
     return False
-
-
+    
 
 def simul_bomb():
 
@@ -101,7 +102,6 @@ def simul_rotate():
 
     temp_grid = [[0 for _ in range(n)] for _ in range(n)]
 
-    
     for i in range(n):
         for j in range(n):
             temp_grid[j][n - i - 1] = grid[i][j]
@@ -111,17 +111,16 @@ def simul_rotate():
             grid[i][j] = temp_grid[i][j]
 
             
-
-
             
 def simul():
 
-    simul_bomb()
+    while check_should_explo():
+        simul_bomb()
+        simul_gravity()
+        
     simul_gravity()
     simul_rotate()
     simul_gravity()
-
-
 
 
 

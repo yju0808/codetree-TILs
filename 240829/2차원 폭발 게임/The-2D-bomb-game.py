@@ -52,14 +52,13 @@ def simul_bomb(col):
         if grid[i][col] == 0:
             continue
 
-        if grid[i][col] == before:
+        elif grid[i][col] == before:
             overlap_count += 1
-            index = i
 
-        else:
+        elif grid[i][col] != before:
             if overlap_count >= m:
                 for k in range(overlap_count):
-                    grid[index - k][col] = 0
+                    grid[i - k - 1][col] = 0
                     
                 is_exploded = True
 
@@ -69,13 +68,13 @@ def simul_bomb(col):
 
     if overlap_count >= m:
         for k in range(overlap_count):
-            grid[index - k][col] = 0
+            grid[i - k][col] = 0
         
         is_exploded = True
 
     
-
     simul_gravity(col)
+
 
     return is_exploded
 

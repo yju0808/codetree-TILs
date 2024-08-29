@@ -1,7 +1,7 @@
 n, m, k = map(int, input().split())
 
 grid = [list(map(int, input().split())) for _ in range(n)]
-
+temp_grid = [[0 for _ in range(n)] for _ in range(n)]
 
 dy = [0, 1, 0, -1]
 dx = [1, 0, -1, 0]
@@ -37,36 +37,11 @@ def simul_gravity():
         for i in range(index - 1, -1, -1):
             grid[i][j] = 0
 
-
-
-def check_should_explo():
-    for j in range(n):
-
-        overlap_count = 1
-        before = None
-
-        for i in range(n):
-
-            if grid[i][j] == 0:
-                continue
-
-            if grid[i][j] == before:
-                overlap_count += 1
-
-            else:
-                if overlap_count >= m:
-                    return True
-
-            before = grid[i][j]
-        
-        if overlap_count >= m:
-            return True
-
-    return False
     
 
 def simul_bomb():
 
+    is_exploded = False
 
     for j in range(n):
 
@@ -89,18 +64,21 @@ def simul_bomb():
                         grid[index - k][j] = 0
                         
                     overlap_count = 0
+                    is_exploded = True
 
             before = grid[i][j]
         
         if overlap_count >= m:
             for k in range(overlap_count):
                 grid[index - k][j] = 0
+            
+            is_exploded = True
+
+    return is_exploded
 
 
 
 def simul_rotate():
-
-    temp_grid = [[0 for _ in range(n)] for _ in range(n)]
 
     for i in range(n):
         for j in range(n):
@@ -114,10 +92,9 @@ def simul_rotate():
             
 def simul():
 
-    while check_should_explo():
-        simul_bomb()
-        simul_gravity()
-        
+    while simul_bomb():
+        pass
+
     simul_gravity()
     simul_rotate()
     simul_gravity()
@@ -128,10 +105,8 @@ for _ in range(k):
     simul()
 
 
-
-while check_should_explo():
-    simul_bomb()
-    simul_gravity()
+while simul_bomb():
+    pass
 
     
 result = 0

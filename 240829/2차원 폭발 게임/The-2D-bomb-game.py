@@ -11,31 +11,30 @@ def is_valid_coord(y, x):
     return 0 <= y < n and 0 <= x < n
 
 
-def simul_gravity():
+def simul_gravity(col):
     
-    for j in range(n):
 
-        index = n - 1
-        keep = 0
+    index = n - 1
+    keep = 0
 
-        for i in range(n - 1, -1, -1):
+    for i in range(n - 1, -1, -1):
 
-            if grid[i][j] == 0:
-                continue
+        if grid[i][col] == 0:
+            continue
 
-            if keep == 0:
-                keep = grid[i][j]
+        if keep == 0:
+            keep = grid[i][col]
 
-            elif grid[i][j] != 0:
-                grid[index][j] = keep
-                keep = grid[i][j]
-                index -= 1
+        elif grid[i][col] != 0:
+            grid[index][col] = keep
+            keep = grid[i][col]
+            index -= 1
 
-        if keep != 0:
-            grid[index][j] = keep
+    if keep != 0:
+        grid[index][col] = keep
 
-        for i in range(index - 1, -1, -1):
-            grid[i][j] = 0
+    for i in range(index - 1, -1, -1):
+        grid[i][col] = 0
 
     
 
@@ -62,8 +61,9 @@ def simul_bomb(col):
                 for k in range(overlap_count):
                     grid[index - k][col] = 0
                     
-                overlap_count = 0
                 is_exploded = True
+
+            overlap_count = 1
 
         before = grid[i][col]
     
@@ -72,6 +72,8 @@ def simul_bomb(col):
             grid[index - k][col] = 0
         
         is_exploded = True
+
+    simul_gravity(col)
 
     return is_exploded
 
@@ -94,15 +96,18 @@ def simul():
     for i in range(n):
         while simul_bomb(i):
             pass
-
-    simul_gravity()
+    
     simul_rotate()
-    simul_gravity()
+    
+    for i in range(n):
+        simul_gravity(i)
 
 
 
 for _ in range(k):
     simul()
+
+
 
 
 for i in range(n):

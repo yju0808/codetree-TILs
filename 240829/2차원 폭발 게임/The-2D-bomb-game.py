@@ -43,8 +43,8 @@ def simul_bomb(col):
     is_exploded = False
 
 
-    overlap_count = 1
-    before = None
+    overlap_count = 0
+    before = grid[0][col]
     index = 0
 
     for i in range(n):
@@ -66,12 +66,14 @@ def simul_bomb(col):
             overlap_count = 1
 
         before = grid[i][col]
-    
+
     if overlap_count >= m:
         for k in range(overlap_count):
             grid[index - k][col] = 0
         
         is_exploded = True
+
+    
 
     simul_gravity(col)
 
@@ -96,7 +98,7 @@ def simul():
     for i in range(n):
         while simul_bomb(i):
             pass
-    
+
     simul_rotate()
     
     for i in range(n):

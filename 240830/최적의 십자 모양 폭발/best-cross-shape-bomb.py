@@ -44,6 +44,7 @@ def simul_gravity():
 def simul_bomb(y, x):
 
     count = grid[y][x]
+
     grid[y][x] = 0
 
     for i in range(4):
@@ -74,12 +75,16 @@ def get_score():
     for i in range(n):
 
         overlap_count = 0
-        before = grid[i][0]
+        before = None
 
         for j in range(n):
 
             if grid[i][j] == 0:
-                overlap_count = 0
+                continue
+
+            elif before == None:
+                before = grid[i][j]
+                overlap_count = 1
 
             elif grid[i][j] != before:
                 if overlap_count == 2:
@@ -92,19 +97,23 @@ def get_score():
 
             before = grid[i][j]
 
+        
         if overlap_count == 2:
             score += 1
-
 
     for j in range(n):
 
         overlap_count = 0
-        before = grid[0][j]
+        before = None
 
         for i in range(n):
 
             if grid[i][j] == 0:
-                overlap_count = 0
+                continue
+
+            elif before == None:
+                before = grid[i][j]
+                overlap_count = 1
 
             elif grid[i][j] != before:
                 if overlap_count == 2:
@@ -119,6 +128,8 @@ def get_score():
 
         if overlap_count == 2:
             score += 1
+
+        
 
     return score
                 
@@ -128,6 +139,9 @@ ans = 0
 for i in range(n):
     for j in range(n):
 
+        if grid[i][j] == 0:
+            continue
+
         copy_array(temp_grid, grid)
 
         simul_bomb(i, j)
@@ -136,6 +150,7 @@ for i in range(n):
         ans = max(ans, get_score())
 
         copy_array(grid, temp_grid)
+
 
 
 print(ans)

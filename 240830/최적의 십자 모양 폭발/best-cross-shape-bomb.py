@@ -79,7 +79,7 @@ def get_score():
         while j < n:
 
             if is_valid_coord(i, j + 1):
-                if grid[i][j] == grid[i][j + 1]:
+                if grid[i][j] != 0 and grid[i][j] == grid[i][j + 1]:
                     score += 1
                     j += 1
                     continue
@@ -94,7 +94,7 @@ def get_score():
         while i < n:
 
             if is_valid_coord(i + 1, j):
-                if grid[i][j] == grid[i + 1][j]:
+                if grid[i][j] != 0 and grid[i][j] == grid[i + 1][j]:
                     score += 1
                     i += 1
                     continue

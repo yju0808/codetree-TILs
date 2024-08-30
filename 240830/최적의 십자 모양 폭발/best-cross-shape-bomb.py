@@ -92,8 +92,8 @@ def get_score():
 
             before = grid[i][j]
 
-    if overlap_count == 2:
-        score += 1
+        if overlap_count == 2:
+            score += 1
 
 
     for j in range(n):
@@ -117,8 +117,8 @@ def get_score():
 
             before = grid[i][j]
 
-    if overlap_count == 2:
-        score += 1
+        if overlap_count == 2:
+            score += 1
 
     return score
                 

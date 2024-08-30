@@ -74,64 +74,33 @@ def get_score():
 
     for i in range(n):
 
-        overlap_count = 0
-        before = None
+        j = 0
 
-        for j in range(n):
+        while j < n:
 
-            if grid[i][j] == 0:
-                overlap_count = 0
-
-            elif before == None:
-                before = grid[i][j]
-                overlap_count = 1
-
-            elif grid[i][j] != before:
-                if overlap_count == 2:
+            if is_valid_coord(i, j + 1):
+                if grid[i][j] == grid[i][j + 1]:
                     score += 1
-                
-                overlap_count = 1
+                    j += 1
+                    continue
 
-            elif grid[i][j] == before:
-                overlap_count += 1
+            j += 1
 
-            before = grid[i][j]
-
-        
-        if overlap_count == 2:
-            score += 1
-
-        
 
     for j in range(n):
 
-        overlap_count = 0
-        before = None
+        i = 0
 
-        for i in range(n):
+        while i < n:
 
-            if grid[i][j] == 0:
-                overlap_count = 0
-
-            elif before == None:
-                before = grid[i][j]
-                overlap_count = 1
-
-            elif grid[i][j] != before:
-                if overlap_count == 2:
+            if is_valid_coord(i + 1, j):
+                if grid[i][j] == grid[i + 1][j]:
                     score += 1
-                
-                overlap_count = 1
+                    i += 1
+                    continue
+  
+            i += 1
 
-            elif grid[i][j] == before:
-                overlap_count += 1
-
-            before = grid[i][j]
-
-        if overlap_count == 2:
-            score += 1
-
-        
 
     return score
                 
@@ -147,7 +116,6 @@ for i in range(n):
         simul_gravity()
 
         ans = max(ans, get_score())
-
         copy_array(grid, temp_grid)
 
 

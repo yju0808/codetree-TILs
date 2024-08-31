@@ -12,16 +12,6 @@ grid = [[0 for _ in range(n)] for _ in range(n)]
 
 direction_mapper = {'L':2, 'R':0, 'U':1, 'D':3}
 
-dice_mapper = [
-    [4,2,3,5],
-    [4,6,3,1],
-    [2,6,5,1],
-    [5,6,2,1],
-    [3,6,4,1],
-    [4,1,3,2]
-]
-
-
 up = 1
 front = 2
 right = 3

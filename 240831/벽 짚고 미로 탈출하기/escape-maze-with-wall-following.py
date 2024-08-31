@@ -66,3 +66,6 @@ while True:
 
         visited.add((ny, nx, direction))
         time += 1
+
+
+print(ans)

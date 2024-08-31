@@ -60,6 +60,7 @@ for direction in directions:
         up, front, right = 7 - front, up, right
 
 
+grid[y][x] = 7 - up
 
 ans = 0
 

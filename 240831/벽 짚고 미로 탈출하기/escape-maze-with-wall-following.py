@@ -4,8 +4,11 @@ y, x = map(int, input().split())
 
 grid = [input() for _ in range(n)]
 
+y -= 1
+x -= 1
 
-dy = [0, 1, 0, -1]
+
+dy = [0, -1, 0, 1]
 dx = [1, 0, -1, 0]
 
 
@@ -15,57 +18,74 @@ time = 0
 def is_valid_coord(y, x):
     return 0 <= y < n and 0 <= x < n
 
-ny = y
-nx = x
 
 ans = -1
 visited = set()
 
-
 while True:
 
-    if (ny, nx, direction) in visited:
+    #print(y, x, direction)
+
+    # 탈출인 경우
+    if not is_valid_coord(y + dy[direction], x + dx[direction]):
+        ans = time + 1
         break
-    
-    if not is_valid_coord(ny + dy[direction], nx + dx[direction]):
-        ans = time
-        break
 
-    ny += dy[direction]
-    nx += dx[direction]
-
-    visited.add((ny, nx, direction))
-
-    time += 1
-
-    if grid[ny][nx] == '#':
-        visited.remove((ny, nx, direction))
-        ny -= dy[direction]
-        nx -= dx[direction]
+    # 앞이 벽인 경우
+    if grid[y + dy[direction]][x + dx[direction]] == '#':
         direction = (direction + 1) % 4
-        time -= 1
-        continue
 
+        if (y, x, direction) not in visited:
+            visited.add((y, x, direction))
+            continue
+        else:
+            break
 
-    right_direction = direction + 1
+    # 한칸 앞
+    ny = y + dy[direction]
+    nx = x + dx[direction]
+
+    # 한칸 앞 오른쪽
+    right_direction = direction - 1 if direction - 1 >= 0 else 3
+    n_right_y = ny + dy[right_direction]
+    n_right_x = nx + dx[right_direction]
+
+    # 앞 오른쪽에 벽이 있는 경우
+    if is_valid_coord(n_right_y, n_right_x) and grid[n_right_y][n_right_x] == '#':
+        y = ny
+        x = nx
+        time += 1
+
+        if (y, x, direction) not in visited:
+            visited.add((y, x, direction))
+        else:
+            break
         
-    right_y = ny + dy[right_direction]
-    right_x = nx + dx[right_direction]
 
-    if is_valid_coord(right_y, right_x) and grid[right_y][right_x] == '#':
-        ny += dy[direction]
-        nx += dx[direction]
-
-        visited.add((ny, nx, direction))
-        time += 1
-
+    # 앞 오른쪽에 벽이 없는 경우
     else:
-        direction = direction - 1 if direction - 1 >= 0 else 3
-        ny += dy[direction]
-        nx += dx[direction]
 
-        visited.add((ny, nx, direction))
+        # 일단 앞으로 한 칸 이동 후 방향 전환
+        y = ny
+        x = nx
+        direction = right_direction
+        time += 1   
+
+        if (y, x, direction) not in visited:
+            visited.add((y, x, direction))
+        else:
+            break
+
+
+        # 그 후 한칸 더 앞으로 이동
+        y += dy[direction]
+        x += dx[direction]
         time += 1
+
+        if (y, x, direction) not in visited:
+            visited.add((y, x, direction))
+        else:
+            break
 
 
 print(ans)

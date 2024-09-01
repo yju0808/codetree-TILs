@@ -5,7 +5,7 @@ dx = [1, 0, -1, 0]
 
 direction_mapper = {'U':1,'D':3,'R':0,'L':2}
 
-def is_valid_coord(y, x):
+def is_valid_coord(y, x, n):
     return 0 <= y < n and 0 <= x < n
 
 
@@ -40,8 +40,13 @@ for _ in range(t):
                     nx = x + dx[d]
 
                     # 벽에 부딧히는 경우
-                    if not is_valid_coord(ny, nx):
-                        temp_grid[y][x] = (d + 2) % 4
+                    if not is_valid_coord(ny, nx, n):
+
+                        if temp_grid[y][x] >= 0:
+                            temp_grid[y][x] = -1
+                            
+                        else:
+                            temp_grid[y][x] = (d + 2) % 4
 
                     # 구슬끼리 충돌하는 경우
                     elif temp_grid[ny][nx] >= 0:

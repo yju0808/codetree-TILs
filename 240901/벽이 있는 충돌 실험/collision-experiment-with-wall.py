@@ -27,7 +27,7 @@ for _ in range(t):
 
         grid[y][x] = direction_mapper[d]
 
-    for _ in range(n * n):
+    for _ in range(n + 5):
         
         for y in range(n):
             for x in range(n):
@@ -44,7 +44,7 @@ for _ in range(t):
 
                         if temp_grid[y][x] >= 0:
                             temp_grid[y][x] = -1
-                            
+
                         else:
                             temp_grid[y][x] = (d + 2) % 4
 

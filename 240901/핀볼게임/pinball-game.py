@@ -51,6 +51,7 @@ def simul(y, x, direction):
 
         y += dy[direction]
         x += dx[direction]
+        visited.add((y, x, direction))
 
         time += 1
 

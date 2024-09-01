@@ -43,19 +43,24 @@ for _ in range(t):
                     if not is_valid_coord(ny, nx, n):
 
                         if temp_grid[y][x] >= 0:
-                            temp_grid[y][x] = -1
+                            temp_grid[y][x] = 4
 
                         else:
                             temp_grid[y][x] = (d + 2) % 4
 
+                
                     # 구슬끼리 충돌하는 경우
                     elif temp_grid[ny][nx] >= 0:
-                        temp_grid[ny][nx] = -1
+                        temp_grid[ny][nx] = 4
 
                     # 문제 없는 경우
                     elif temp_grid[ny][nx] == -1:
                         temp_grid[ny][nx] = d
 
+        for i in range(n):
+            for j in range(n):
+                if temp_grid[i][j] == 4:
+                    temp_grid[i][j] = -1
 
         for i in range(n):
             for j in range(n):

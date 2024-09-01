@@ -44,9 +44,10 @@ for _ in range(k):
         ny = y + dy[d]
         nx = x + dx[d]
 
-        if not is_valid_coord(ny, nx) or (ny, nx) in snake:
+        if not is_valid_coord(ny, nx) or ((ny, nx) != snake[0] and (ny, nx) in snake):
             is_ended = True
             time += 1
+            
             break
 
         if (ny, nx) in apple:
@@ -58,9 +59,8 @@ for _ in range(k):
             snake.append((ny, nx))
             
         time += 1
-
+    
     if is_ended:
         break
-
 
 print(time)

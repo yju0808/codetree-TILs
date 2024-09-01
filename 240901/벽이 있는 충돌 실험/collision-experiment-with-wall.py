@@ -31,7 +31,7 @@ for _ in range(t):
         grid[y][x] = direction_mapper[d]
         beads.add((y, x))
 
-    for _ in range(n * n):
+    for _ in range(2 * n):
 
         for y, x in beads:
             

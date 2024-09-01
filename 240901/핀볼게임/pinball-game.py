@@ -11,7 +11,6 @@ def is_valid_coord(y, x):
     return 0 <= y < n and 0 <= x < n
 
 
-
 def simul(y, x, direction):
 
     time = 1
@@ -23,8 +22,11 @@ def simul(y, x, direction):
 
         if grid[y][x] == 1:
             
-            if direction <= 1:
+            if direction == 0:
                 direction = 1
+
+            elif direction == 1:
+                direction = 0
 
             elif direction == 2:
                 direction = 3
@@ -51,15 +53,11 @@ def simul(y, x, direction):
 
         y += dy[direction]
         x += dx[direction]
-        visited.add((y, x, direction))
-
         time += 1
-
 
     return time
 
 ans = 0
-
 
 for i in range(n):
     ans = max(ans, simul(i, 0, 0))

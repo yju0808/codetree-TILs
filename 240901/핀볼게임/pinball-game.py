@@ -15,8 +15,11 @@ def is_valid_coord(y, x):
 def simul(y, x, direction):
 
     time = 1
+    visited = set()
 
     while is_valid_coord(y, x):
+
+        visited.add((y, x, direction))
 
         if grid[y][x] == 1:
             
@@ -43,6 +46,8 @@ def simul(y, x, direction):
             elif direction == 3:
                 direction = 0
 
+        if (y + dy[direction], x + dx[direction], direction) in visited:
+            return -1
 
         y += dy[direction]
         x += dx[direction]

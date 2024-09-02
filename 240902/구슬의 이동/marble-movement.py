@@ -23,7 +23,7 @@ for i in range(m):
     r -= 1
     c -= 1
 
-    grid[r][c].append((direction_mapper[d], v, i))
+    grid[r][c].append((direction_mapper[d], v, i + 1))
 
 
 
@@ -37,9 +37,9 @@ for _ in range(t):
                 nx = x
                 nd = d
 
-                for i in range(v):
-                    if not is_valid_coord(ny + dy[d], nx + dx[d]):
-                        nd = (d + 2) % 4
+                for _ in range(v):
+                    if not is_valid_coord(ny + dy[nd], nx + dx[nd]):
+                        nd = (nd + 2) % 4
 
                     ny += dy[nd]
                     nx += dx[nd]

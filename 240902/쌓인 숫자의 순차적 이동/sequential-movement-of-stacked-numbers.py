@@ -24,7 +24,7 @@ def get_number_index(number):
 def get_max_number_index(y, x):
 
     max_num = 0
-    ans_y, ans_x = 0, 0
+    ans_y, ans_x = -1, -1
 
     for i in range(8):
 
@@ -53,11 +53,12 @@ for number in numbers:
     y, x, k = get_number_index(number)
     ny, nx = get_max_number_index(y, x)
 
-    a = grid[y][x][k:]
-    b = grid[y][x][:k]
-    grid[y][x] = b
+    if is_valid_coord(ny, nx):
+        a = grid[y][x][k:]
+        b = grid[y][x][:k]
+        grid[y][x] = b
 
-    grid[ny][nx].extend(a)
+        grid[ny][nx].extend(a)
 
 
 

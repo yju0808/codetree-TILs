@@ -12,7 +12,7 @@ n, m, t, k = map(int, input().split())
 grid = [[[] for _ in range(n)] for _ in range(n)]
 temp_grid = [[[] for _ in range(n)] for _ in range(n)]
 
-for _ in range(m):
+for i in range(m):
 
     r, c, d, v = input().split()
 
@@ -23,7 +23,7 @@ for _ in range(m):
     r -= 1
     c -= 1
 
-    grid[r][c].append((direction_mapper[d], v))
+    grid[r][c].append((direction_mapper[d], v, i))
 
 
 
@@ -31,7 +31,7 @@ for _ in range(t):
 
     for y in range(n):
         for x in range(n):
-            for d, v in grid[y][x]:
+            for d, v, i in grid[y][x]:
 
                 ny = y
                 nx = x
@@ -40,11 +40,11 @@ for _ in range(t):
                 for i in range(v):
                     if not is_valid_coord(ny + dy[d], nx + dx[d]):
                         nd = (d + 2) % 4
-                    else:
-                        ny += dy[d]
-                        nx += dx[d]
 
-                temp_grid[ny][nx].append((nd, v))
+                    ny += dy[nd]
+                    nx += dx[nd]
+
+                temp_grid[ny][nx].append((nd, v, i))
 
 
     
@@ -53,9 +53,10 @@ for _ in range(t):
 
             if len(temp_grid[y][x]) > k:
 
-                temp_grid[y][x].sort(lambda x: -x[1])
+                temp_grid[y][x].sort(lambda x: (-x[1], -x[2]))
                 rest = temp_grid[y][x][:k]
                 temp_grid[y][x] = rest
+
 
 
     for y in range(n):
@@ -65,8 +66,6 @@ for _ in range(t):
     for y in range(n):
         for x in range(n):
             temp_grid[y][x] = []
-
-
 
 ans = 0
 

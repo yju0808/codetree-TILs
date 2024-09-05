@@ -4,7 +4,7 @@ dx = [1, 0, -1, 0]
 direction_mapper = {'U':1,'D':3,'R':0,'L':2}
 
 def is_valid_coord(y, x):
-    return -2000 <= y <= 2000 and -2000 <= x <= 2000
+    return 0 <= y <= 4000 and 0 <= x <= 4000
 
 
 
@@ -14,8 +14,9 @@ t = int(input())
 
 for _ in range(t):
 
-    beads = {}
-    temp_beads = {}
+    beads = []
+    temp_beads = []
+    beads_index = [[-1 for _ in range(4000 + 1)] for _ in range(4000 + 1)]
 
     n = int(input())
 
@@ -30,42 +31,54 @@ for _ in range(t):
         y *= 2
         x *= 2
 
+        y += 2000
+        x += 2000
 
-        beads[(y,x)] = [(direction_mapper[d], w, i + 1)]
+        beads.append((y, x, direction_mapper[d], w, i + 1))
 
     ans = -1
 
     for time in range(4000):
+  
 
-        for y, x in beads.keys():
+        for y, x, d, w, i in beads:
 
-            for d, w, i in beads[(y, x)]:
+            ny = y
+            nx = x
+            nd = d
 
-                ny = y
-                nx = x
-                nd = d
+            ny += dy[nd]
+            nx += dx[nd]
 
-                ny += dy[nd]
-                nx += dx[nd]
+            if not is_valid_coord(ny, nx):
+                continue
 
-                if (ny, nx) in temp_beads:
-                    temp_beads[(ny, nx)].append((nd, w, i))
+            if beads_index[ny][nx] == -1:
+                temp_beads.append((ny, nx, nd, w, i))
+                beads_index[ny][nx] = len(temp_beads) - 1
+            else:   
 
-                else:
-                    temp_beads[(ny, nx)] = [(nd, w, i)]
+                index = beads_index[ny][nx]
 
+                # 1이 현재, 2는 과거 기록된 것
+                w1 = w
+                w2 = temp_beads[index][3]
 
-        
-        for y, x in temp_beads.keys():
-            if len(temp_beads[(y, x)]) > 1:
+                index1 = i
+                index2 = temp_beads[index][4]
 
-                temp_beads[(y, x)].sort(lambda x: (-x[1], -x[2]))
-                rest = temp_beads[(y, x)][0]
-                temp_beads[(y, x)] = [rest]
-
+                # 현재것이 더 크면 교체
+                if w1 > w2 or (w1 == w2 and index1 > index2):
+                    temp_beads[index] = (ny, nx, nd, w, i)
+                
                 ans = time + 1
-        
+                    
+
+        for y, x, d, w, i in temp_beads:
+            beads_index[y][x] = -1
+
         beads = temp_beads
-        temp_beads = {}
+        temp_beads = []
+
 
     print(ans)

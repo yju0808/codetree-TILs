@@ -35,7 +35,7 @@ for _ in range(t):
 
 
 
-    for time in range(2):
+    for time in range(4000):
 
 
         for y, x in beads.keys():

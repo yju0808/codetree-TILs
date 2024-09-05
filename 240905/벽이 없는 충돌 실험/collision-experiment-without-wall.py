@@ -7,13 +7,15 @@ def is_valid_coord(y, x):
     return -2000 <= y <= 2000 and -2000 <= x <= 2000
 
 
-beads = {}
-temp_beads = {}
+
 
 t = int(input())
 
 
 for _ in range(t):
+
+    beads = {}
+    temp_beads = {}
 
     n = int(input())
 
@@ -36,7 +38,6 @@ for _ in range(t):
 
 
     for time in range(4000):
-
 
         for y, x in beads.keys():
 

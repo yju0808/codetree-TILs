@@ -7,8 +7,7 @@ def is_valid_coord(y, x):
     return 0 <= y <= 4000 and 0 <= x <= 4000
 
 
-
-
+beads_index = [[-1 for _ in range(4000 + 1)] for _ in range(4000 + 1)]
 t = int(input())
 
 
@@ -16,7 +15,7 @@ for _ in range(t):
 
     beads = []
     temp_beads = []
-    beads_index = [[-1 for _ in range(4000 + 1)] for _ in range(4000 + 1)]
+   
 
     n = int(input())
 
@@ -40,7 +39,6 @@ for _ in range(t):
 
     for time in range(4000):
   
-
         for y, x, d, w, i in beads:
 
             ny = y

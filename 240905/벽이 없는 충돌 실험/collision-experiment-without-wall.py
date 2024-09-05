@@ -1,4 +1,4 @@
-dy = [0, -1, 0, 1]
+dy = [0, 1, 0, -1]
 dx = [1, 0, -1, 0]
 
 direction_mapper = {'U':1,'D':3,'R':0,'L':2}
@@ -19,7 +19,7 @@ for _ in range(t):
 
     for i in range(n):
 
-        y, x, w, d = input().split()
+        x, y, w, d = input().split()
 
         y = int(y)
         x = int(x)
@@ -28,20 +28,23 @@ for _ in range(t):
         y *= 2
         x *= 2
 
+
         beads[(y,x)] = [(direction_mapper[d], w, i + 1)]
 
     ans = -1
 
-    for time in range(4000):
 
-        for key in beads.keys():
 
-            for d, w, i in beads[key]:
+    for time in range(2):
+
+
+        for y, x in beads.keys():
+
+            for d, w, i in beads[(y, x)]:
 
                 ny = y
                 nx = x
                 nd = d
-
 
                 if not is_valid_coord(ny + dy[nd], nx + dx[nd]):
                     nd = (nd + 2) % 4
@@ -55,13 +58,14 @@ for _ in range(t):
                 else:
                     temp_beads[(ny, nx)] = [(nd, w, i)]
 
-        
-        for key in temp_beads.keys():
-            if len(temp_beads[key]) > 1:
 
-                temp_beads[key].sort(lambda x: (-x[1], -x[2]))
-                rest = temp_beads[key][0]
-                temp_beads[key] = [rest]
+        
+        for y, x in temp_beads.keys():
+            if len(temp_beads[(y, x)]) > 1:
+
+                temp_beads[(y, x)].sort(lambda x: (-x[1], -x[2]))
+                rest = temp_beads[(y, x)][0]
+                temp_beads[(y, x)] = [rest]
 
                 ans = time + 1
         

@@ -35,8 +35,6 @@ for _ in range(t):
 
     ans = -1
 
-
-
     for time in range(4000):
 
         for y, x in beads.keys():
@@ -46,9 +44,6 @@ for _ in range(t):
                 ny = y
                 nx = x
                 nd = d
-
-                if not is_valid_coord(ny + dy[nd], nx + dx[nd]):
-                    nd = (nd + 2) % 4
 
                 ny += dy[nd]
                 nx += dx[nd]

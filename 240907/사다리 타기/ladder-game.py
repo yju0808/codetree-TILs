@@ -44,25 +44,28 @@ def simul(lines):
 result = simul(lines)
 ans = float('inf')
 
-def select():
+def select(k):
 
     global ans
 
-    if len(selected_lines) == len(lines):
+    if k >= len(lines):
+        if simul(selected_lines) == result:
+            ans = min(ans, len(selected_lines))
         return
 
-    for line in lines:
+    for i in range(len(lines)):
+        line = lines[i]
+
+
         selected_lines.append(line)
 
-        if simul(selected_lines) == result:
-            ans = min(ans, len(selected_lines))
+        select(k + 1)
 
-        select()
         selected_lines.pop()
 
-        if simul(selected_lines) == result:
-            ans = min(ans, len(selected_lines))
+        select(k + 1)
 
-select()
+
+select(0)
     
 print(ans)

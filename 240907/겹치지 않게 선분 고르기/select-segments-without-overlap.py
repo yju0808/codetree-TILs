@@ -33,9 +33,10 @@ def select():
         selected.append(points[i])
 
         if (is_overlapped(selected)):
-            return
-        else:
-            ans = len(selected)
+            selected.pop()
+            continue
+
+        ans = len(selected)
 
         select()
         selected.pop()

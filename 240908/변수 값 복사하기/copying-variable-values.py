@@ -5,6 +5,4 @@ c = 3
 a = c
 b = c
 
-print(a)
-print(b)
-print(c)
+print(a, b, c)

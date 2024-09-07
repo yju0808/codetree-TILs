@@ -51,7 +51,6 @@ def select():
     if len(selected_lines) == len(lines):
         return
 
-
     for line in lines:
         selected_lines.append(line)
 
@@ -60,6 +59,9 @@ def select():
 
         select()
         selected_lines.pop()
+
+        if simul(selected_lines) == result:
+            ans = min(ans, len(selected_lines))
 
 select()
     

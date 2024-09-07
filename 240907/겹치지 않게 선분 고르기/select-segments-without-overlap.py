@@ -22,7 +22,7 @@ def is_overlapped(points):
 
 ans = 0
 
-def select():
+def select(k):
 
     global ans
 
@@ -30,7 +30,7 @@ def select():
         return
 
 
-    for i in range(len(points)):
+    for i in range(k + 1, len(points)):
 
         selected.append(points[i])
 
@@ -40,9 +40,9 @@ def select():
 
         ans = max(ans, len(selected))
 
-        select()
+        select(i)
         selected.pop()
 
-select()
+select(-1)
 
 print(ans)

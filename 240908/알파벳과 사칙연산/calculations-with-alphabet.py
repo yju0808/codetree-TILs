@@ -11,32 +11,40 @@ for s in string:
 
 def cal(string, nums):
 
+    prefix = []
+    ops = []
     i = 0
-    current = 0
-    new_string = []
+    stack = []
 
     for s in string:
 
         if s.isalpha():
-            new_string.append(int(nums[i]))
+            prefix.append(nums[i])
             i += 1
         else:
-            new_string.append(s)
+            ops.append(s)
 
-    for i in range(0, len(new_string)):
+    for op in ops:
+        prefix.append(op)
 
-        s = new_string[i]
 
-        if s == '*':
-            current += new_string[i - 1] * new_string[i + 1]
+    for s in prefix:
+        if s.isdigit():
+            stack.append(int(s))
+        else:
+            p1 = stack.pop()
+            p2 = stack.pop()
 
-        elif s == '-':
-            current += new_string[i - 1] - new_string[i + 1]
+            if s == '*':
+                stack.append(p1 * p2)
 
-        elif s == '+':
-            current += new_string[i - 1] + new_string[i + 1]
+            elif s == '-':
+                stack.append(p1 - p2)
 
-    return current
+            elif s == '+':
+                stack.append(p1 + p2)
+
+    return stack[0]
 
 
 ans = -float('inf')

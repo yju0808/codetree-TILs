@@ -47,7 +47,7 @@ def cal(string, nums):
     return stack[0]
 
 
-ans = 0
+ans = -float('inf')
 
 
 def select(k):

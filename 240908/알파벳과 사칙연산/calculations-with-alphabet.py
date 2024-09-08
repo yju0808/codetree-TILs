@@ -1,12 +1,14 @@
 string = input()
 
-count = 0
+count = set()
 nums = [str(i + 1) for i in range(4)]
 selected_nums = []
 
+
 for s in string:
     if s.isalpha():
-        count += 1
+        count.add(s)
+
 
 
 def cal(string, nums):
@@ -15,12 +17,18 @@ def cal(string, nums):
     ops = []
     i = 0
     stack = []
+    mapper = {}
+
+    for s in string:
+        if s.isalpha() and s not in mapper:
+            mapper[s] = nums[i]
+            i += 1
+
 
     for s in string:
 
         if s.isalpha():
-            prefix.append(nums[i])
-            i += 1
+            prefix.append(mapper[s])
         else:
             ops.append(s)
 
@@ -44,6 +52,7 @@ def cal(string, nums):
             elif s == '+':
                 stack.append(p1 + p2)
 
+
     return stack[0]
 
 
@@ -53,7 +62,7 @@ ans = -float('inf')
 def select(k):
     global ans 
 
-    if k == count:
+    if k == len(count):
         ans = max(ans, cal(string, selected_nums))
         return
 

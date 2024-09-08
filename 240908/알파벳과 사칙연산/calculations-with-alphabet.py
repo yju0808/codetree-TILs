@@ -19,17 +19,19 @@ def cal(string, nums):
     stack = []
     mapper = {}
 
+
     for s in string:
         if s.isalpha() and s not in mapper:
-            mapper[s] = nums[i]
+            mapper[s] = str(nums[i])
             i += 1
-
 
     for s in string:
 
         if s.isalpha():
             prefix.append(mapper[s])
         else:
+            while ops:
+                prefix.append(ops.pop())
             ops.append(s)
 
     for op in ops:
@@ -40,8 +42,8 @@ def cal(string, nums):
         if s.isdigit():
             stack.append(int(s))
         else:
-            p1 = stack.pop()
             p2 = stack.pop()
+            p1 = stack.pop()
 
             if s == '*':
                 stack.append(p1 * p2)

@@ -22,7 +22,7 @@ def solve(y, x, count):
 
     ans = max(ans, count)
 
-    d = direction[x][y] - 1
+    d = direction[y][x] - 1
 
     for i in range(n):
         nx, ny = x + dxs[d] * i, y + dys[d] * i

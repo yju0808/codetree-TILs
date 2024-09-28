@@ -29,7 +29,7 @@ candi = []
 ans = ['9']
 
 
-def solve():
+def solve(before):
 
     global ans
 
@@ -40,10 +40,14 @@ def solve():
 
 
     for i in range(3):
+
+        if i == before:
+            continue
+
         candi.append(nums[i])
-        solve()
+        solve(i)
         candi.pop()
 
 
-solve()
+solve(-1)
 print("".join(ans))

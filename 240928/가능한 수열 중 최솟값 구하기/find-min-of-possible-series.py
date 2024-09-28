@@ -1,3 +1,4 @@
+import sys
 n = int(input())
 
 nums = ['4', '5', '6']
@@ -37,8 +38,8 @@ def solve():
         return
 
     if len(candi) == n:
-        ans = min(ans, candi[:])
-        return
+        print("".join(candi[:]))
+        sys.exit(0)
 
 
     for i in range(3):
@@ -48,4 +49,3 @@ def solve():
 
 
 solve()
-print("".join(ans))

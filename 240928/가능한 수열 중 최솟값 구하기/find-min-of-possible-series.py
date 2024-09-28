@@ -29,25 +29,23 @@ candi = []
 ans = ['9']
 
 
-def solve(before):
+def solve():
 
     global ans
 
+    if not is_possible(candi):
+        return
+
     if len(candi) == n:
-        if is_possible(candi):
-            ans = min(ans, candi[:])
+        ans = min(ans, candi[:])
         return
 
 
     for i in range(3):
-
-        if i == before:
-            continue
-
         candi.append(nums[i])
-        solve(i)
+        solve()
         candi.pop()
 
 
-solve(-1)
+solve()
 print("".join(ans))

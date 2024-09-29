@@ -40,15 +40,16 @@ def solve(last):
 
     global ans
 
+
     if len(selected) >= 3:
         ans = min(cal_ans(), ans)
         return
 
-    for i in range(int(last), len(coins)):
+    for i in range(last, len(coins)):
 
         selected.append(coins[i])
 
-        solve(coins[i][0])
+        solve(i + 1)
 
         selected.pop()
 

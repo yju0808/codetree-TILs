@@ -7,19 +7,36 @@ selected = []
 
 
 def cal_dist(p1, p2):
-    y1, x1 = p1
-    y2, x2 = p2
+    x1, y1 = p1
+    x2, y2 = p2
 
     return math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2)
 
 ans = float('inf')
 
+
+def cal_ans(selected):
+
+    result = 0
+
+    for i in range(len(selected)):
+        for j in range(len(selected)):
+
+            if i == j:
+                continue
+
+            result = max(result, cal_dist(selected[i], selected[j]))
+
+
+    return result
+
+
 def solve(last):
 
     global ans
 
-    if len(selected) == 2:
-        ans = min(ans, cal_dist(selected[0], selected[1]))
+    if len(selected) == m:
+        ans = min(ans, cal_ans(selected))
         return
 
     for i in range(last + 1, len(points)):

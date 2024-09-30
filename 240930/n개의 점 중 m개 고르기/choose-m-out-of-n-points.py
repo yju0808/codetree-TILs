@@ -17,7 +17,7 @@ ans = float('inf')
 
 def cal_ans(selected):
 
-    result = 0
+    result = -1
 
     for i in range(len(selected)):
         for j in range(len(selected)):

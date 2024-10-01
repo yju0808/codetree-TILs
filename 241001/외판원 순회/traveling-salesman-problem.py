@@ -4,7 +4,7 @@ grid = [list(map(int, input().split())) for _ in range(n)]
 
 visitied = [False for _ in range(n)]
 
-selected = []
+selected = [0]
 
 def cal_dist(selected):
 
@@ -16,7 +16,7 @@ def cal_dist(selected):
         result += grid[cur][ne]
 
 
-    result += grid[selected[-1]][selected[0]]
+    result += grid[selected[-1]][0]
     return result
 
 ans = float('inf')
@@ -29,7 +29,7 @@ def solve():
         ans = min(ans, cal_dist(selected))
         return
 
-    for i in range(n):
+    for i in range(1, n):
         if visitied[i]:
             continue
 

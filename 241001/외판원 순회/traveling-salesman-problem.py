@@ -5,7 +5,6 @@ grid = [list(map(int, input().split())) for _ in range(n)]
 visitied = [False for _ in range(n)]
 
 selected = [0]
-visitied[0] = True
 
 def cal_dist(selected):
 
@@ -14,9 +13,15 @@ def cal_dist(selected):
     for i in range(0, len(selected) - 1):
         cur = selected[i]
         ne = selected[i + 1]
+
+        if not grid[cur][ne]:
+            return float('inf')
+
         result += grid[cur][ne]
 
-    
+    if not grid[selected[-1]][0]:
+        return float('inf')
+        
     result += grid[selected[-1]][0]
     return result
 
@@ -32,9 +37,6 @@ def solve():
 
     for i in range(1, n):
         if visitied[i]:
-            continue
-
-        if grid[selected[-1]][i] == 0:
             continue
 
         selected.append(i)

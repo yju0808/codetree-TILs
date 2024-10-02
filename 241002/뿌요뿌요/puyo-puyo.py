@@ -39,8 +39,9 @@ for i in range(n):
             size = dfs(i, j, 1)
 
             if size >= 4:
-                max_block_size = max(max_block_size, size)
                 block_count += 1
+            
+            max_block_size = max(max_block_size, size)
 
 
 print(block_count, max_block_size)

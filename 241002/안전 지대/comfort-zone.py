@@ -32,7 +32,7 @@ def dfs(y, x, k):
             visited[ny][nx] = True
             dfs(ny, nx, k)
 
-ans = 0
+ans = 1
 max_safe_area_count = 0
 
 for k in range(1, max_k + 1):

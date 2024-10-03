@@ -26,7 +26,6 @@ def bfs(selected, visited):
 
     dq = deque()
     
-
     for y, x in selected:
         dq.append((y, x))
         visited[y][x] = True
@@ -56,6 +55,7 @@ def select(last):
     if len(selected) == k:
         visited = [[False for _ in range(n)] for _ in range(n)]
         ans = max(ans, bfs(selected, visited))
+        return
 
 
     for i in range(last + 1, len(cities)):

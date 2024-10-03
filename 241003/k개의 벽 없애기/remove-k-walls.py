@@ -27,7 +27,7 @@ for i in range(n):
 
 selected = []
 
-ans = -1
+ans = float('inf')
 
 def bfs(y, x, visited):
 
@@ -69,7 +69,8 @@ def select(last):
         for y, x in selected:
             grid[y][x] = 1
 
-        ans = max(ans, result)
+        if result != -1:
+            ans = min(ans, result)
 
     for i in range(last + 1, len(walls)):
         selected.append(walls[i])
@@ -78,4 +79,4 @@ def select(last):
 
 
 select(-1)
-print(ans)
+print(ans if ans != float('inf') else - 1)

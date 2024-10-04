@@ -12,9 +12,9 @@ def get_answer(n):
 
 
     dp[n] = dp[n - 2] + dp[n - 3]
-    return dp[n]
+    return dp[n] % 10007
 
 
 
 get_answer(n)
-print(dp[n])
+print(dp[n] % 10007)

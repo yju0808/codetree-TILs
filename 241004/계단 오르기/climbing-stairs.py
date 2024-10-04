@@ -7,11 +7,14 @@ dp[3] = 1
 
 def get_answer(n):
 
+    if n < 2:
+        return 0
+
     if dp[n]:
         return dp[n]
 
 
-    dp[n] = (dp[n - 2] + dp[n - 3]) % 10007
+    dp[n] = (get_answer(n - 2) + get_answer(n - 3)) % 10007
     return dp[n]
 
 

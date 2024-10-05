@@ -17,9 +17,7 @@ def get_answer(n):
     temp = 0
 
     for i in range(n - 3, -1, -1):
-        temp += get_answer(i) % 1000000000007
-
-    temp *= 2
+        temp += (get_answer(i) * 2) % 1000000000007
 
     dp[n] += temp
     dp[n] = dp[n] % 1000000000007

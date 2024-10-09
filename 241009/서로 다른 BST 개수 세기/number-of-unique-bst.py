@@ -1,3 +1,7 @@
+import sys
+
+sys.setrecursionlimit(10 ** 5)
+
 n = int(input())
 
 dp = [0 for _ in range(n +1)]

@@ -10,7 +10,7 @@ def get_answer(k):
     if dp[k]:
         return dp[k]
 
-    dp[k] = get_answer(k - 1) + get_answer(k - 2) *2
+    dp[k] = (get_answer(k - 1) + get_answer(k - 2) *2) %10007
     return dp[k]
 
 print(get_answer(n))

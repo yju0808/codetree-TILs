@@ -1,13 +1,8 @@
-import sys
-
-sys.setrecursionlimit(10 ** 6)
-
 n = int(input())
 
 dp = [0 for _ in range(n +1)]
 
 dp[0] = 1
-dp[1] = 1
 
 def get_answer(k):
 
@@ -19,7 +14,7 @@ def get_answer(k):
     for i in range(0, n):
         ans += get_answer(i) * get_answer(n - i - 1)
 
-    dp[n] = ans
-    return dp[n]
+    dp[k] = ans
+    return dp[k]
 
 print(get_answer(n))

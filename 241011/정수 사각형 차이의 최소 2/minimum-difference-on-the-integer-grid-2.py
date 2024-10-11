@@ -37,7 +37,11 @@ def get_answer(i, j):
                 final_min_num = temp_min_num
                 final_max_num = temp_max_num
 
-                result.append((final_min_num, final_max_num))
+                if temp_value == value:
+                    result.append((final_min_num, final_max_num))
+                else:
+                    result = [(final_min_num, final_max_num)]
+
                 value = abs(temp_max_num - temp_min_num)
 
     if is_valid_coord(i, j - 1):
@@ -54,7 +58,11 @@ def get_answer(i, j):
                 final_min_num = temp_min_num
                 final_max_num = temp_max_num
 
-                result.append((final_min_num, final_max_num))
+                if temp_value == value:
+                    result.append((final_min_num, final_max_num))
+                else:
+                    result = [(final_min_num, final_max_num)]
+
                 value = abs(temp_max_num - temp_min_num)
 
     fianl_result = []

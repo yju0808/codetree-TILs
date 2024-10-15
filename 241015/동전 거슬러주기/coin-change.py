@@ -27,7 +27,7 @@ def get_answer(k):
         if temp == float('inf'):
             continue
 
-        dp[k] = min(dp[k], get_answer(k - coin) + 1)
+        dp[k] = min(dp[k], temp + 1)
 
     return dp[k]
 

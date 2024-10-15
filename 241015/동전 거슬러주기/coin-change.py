@@ -6,7 +6,7 @@ n, m = map(int, input().split())
 
 coins = list(map(int, input().split()))
 
-dp = [float('inf') for _ in range(m + 1)]
+dp = [-1 for _ in range(m + 1)]
 
 for coin in coins:
     if coin <= m:
@@ -18,20 +18,16 @@ def get_answer(k):
     if k < 0:
         return float('inf')
 
-    if dp[k] != float('inf'):
+    if dp[k] != -1:
         return dp[k]
 
+    dp[k] = float('inf')
+
     for coin in coins:
-        temp = get_answer(k - coin)
-
-        if temp == float('inf'):
-            continue
-
-        dp[k] = min(dp[k], temp + 1)
+        dp[k] = min(dp[k], get_answer(k - coin) + 1)
 
     return dp[k]
 
 ans = get_answer(m)
-
 
 print(ans if ans != float('inf') else -1)

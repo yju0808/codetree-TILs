@@ -29,4 +29,4 @@ def get_answer(index, k):
 
 ans = get_answer(0, m)
 
-print(ans if ans != float('inf') else ans)
+print(ans if ans != float('inf') else -1)

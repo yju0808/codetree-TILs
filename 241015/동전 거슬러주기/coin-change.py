@@ -1,3 +1,7 @@
+import sys
+
+sys.setrecursionlimit(10**5)
+
 n, m = map(int, input().split())
 
 coins = list(map(int, input().split()))

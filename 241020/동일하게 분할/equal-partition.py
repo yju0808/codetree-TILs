@@ -24,7 +24,7 @@ ans = 'No'
 
 for i in range(1, m):
     if dp[n][i]:
-        if i == m // 2:
+        if m % 2 == 0 and i == m // 2:
             ans = 'Yes'
         
 

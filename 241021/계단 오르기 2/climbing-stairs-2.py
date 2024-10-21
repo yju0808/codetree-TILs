@@ -2,9 +2,7 @@ n = int(input())
 coins = list(map(int, input().split()))
 coins.insert(0, 0)
 
-dp = [[-1 for _ in range(4)] for _ in range(n + 1)]
-
-dp[1][1] = coins[1]
+dp = [[-1 for _ in range(3)] for _ in range(n + 1)]
 
 def get_answer(n, count):
     if n <= 0:

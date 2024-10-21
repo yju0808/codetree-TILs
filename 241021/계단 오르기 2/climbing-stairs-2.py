@@ -1,27 +1,27 @@
+# 계단의 층 수를 입력받습니다.
 n = int(input())
-coins = list(map(int, input().split()))
-coins.insert(0, 0)
+coin = [0] * (n + 1)
 
-dp = [[-1 for _ in range(3)] for _ in range(n + 1)]
 
-def get_answer(n, count):
-    if n <= 0:
-        return 0
+coin =  list(map(int, input().split()))
+coin.insert(0, 0)
 
-    if dp[n][count] != -1:
-        return dp[n][count]
+dp = [[0 for _ in range(4)] for _ in range(n + 1)]
 
-    one_step = 0
-    two_step = 0
 
-    if count < 2:
-        one_step = get_answer(n - 1, count + 1) + coins[n]
+dp[1][1] = coin[1]
+if n > 1:
+    dp[2][0] = coin[2]
+    dp[2][2] = coin[1] + coin[2]
 
-    two_step = get_answer(n - 2, count) + coins[n]
 
-    dp[n][count] = max(one_step, two_step)
+for i in range(3, n + 1):
+    for j in range(4):
+        if dp[i-2][j] != 0:
+            dp[i][j] = max(dp[i][j], dp[i - 2][j] + coin[i])
+        if j and dp[i - 1][j - 1] != 0:
+            dp[i][j] = max(dp[i][j], dp[i - 1][j - 1] + coin[i])
 
-    return dp[n][count]
 
-result = get_answer(n, 0)
-print(result)
+ans = max(dp[n])
+print(ans)

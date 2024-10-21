@@ -16,7 +16,7 @@ def get_answer(n, count):
     one_step = 0
     two_step = 0
 
-    if count < 3:
+    if count < 2:
         one_step = get_answer(n - 1, count + 1) + coins[n]
 
     two_step = get_answer(n - 2, count) + coins[n]

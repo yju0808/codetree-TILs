@@ -3,10 +3,7 @@ n, m = map(int, input().split())
 nums = list(map(int, input().split()))
 nums.insert(0, 0)
 
-max_num = max(nums)
-
 dp = [[0 for _ in range(41)] for _ in range(len(nums) + 1)]
-dp[0][0] = 1
 dp[0][20] = 1
 
 for i in range(1, len(nums)):

@@ -7,10 +7,22 @@ dp = [[-float('inf') for _ in range(n)] for _ in range(m + 1)]
 
 for i in range(0, n):
 
-    s, e, v = clothes[i]
-    dp[1][i] = v
+    cs, ce, cv = clothes[i]
 
-for i in range(2, m +1):
+    for j in range(0, n):
+
+        bs, be, bv = clothes[j]
+
+        if not ((cs <= 2 <= ce) or (bs <= 1 <= be)):
+            continue
+
+        dp[2][i] = max(dp[2][i], abs(bv - cv))
+
+
+    s, e, v = clothes[i]
+    dp[0][i] = 0
+
+for i in range(3, m +1):
 
     for j in range(0, n):
 
@@ -31,12 +43,6 @@ ans = 0
 for i in range(0, n):
     ans = max(dp[m][i], ans)
 
-temp = 0
-
-for i in range(0, n):
-    temp += dp[1][i]
-
-ans -= temp
 
 print(ans)
 

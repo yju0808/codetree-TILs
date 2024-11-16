@@ -4,7 +4,7 @@ a = input()
 b = input()
 
 dp = [[0 for _ in range(len(b) + 1)] for _ in range(len(a) +1)]
-dp[0][0] = 1 if a[0] == b[0] else 2
+dp[0][0] = 1 if a[0] == b[0] else 0
 
 for i in range(len(a)):
     for j in range(len(b)):

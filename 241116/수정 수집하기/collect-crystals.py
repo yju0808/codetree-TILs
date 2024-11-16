@@ -18,7 +18,7 @@ for i in range(2, n + 1):
                 cristal = 0
                 d = directions[i]
 
-                if (j == 0 and d == 'L') or (j == 1 or d == 'R'):
+                if (j == 0 and d == 'L') or (j == 1 and d == 'R'):
                     cristal = 1
 
                 if j == k:
@@ -30,7 +30,7 @@ for i in range(2, n + 1):
 
 ans = 0
 for i in range(2):
-    for j in range(k_ +1):
+    for j in range(k_ + 1):
         ans = max(ans, dp[n][i][j])
 
 

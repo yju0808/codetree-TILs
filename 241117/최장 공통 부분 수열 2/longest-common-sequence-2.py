@@ -3,8 +3,8 @@
 a = input()
 b = input()
 
-a = 'X' + a
-b = 'X' + b
+a = ' ' + a
+b = ' ' + b
 
 dp = [['' for _ in range(len(b))] for _ in range(len(a))]
 dp[1][1] = a[0] if a[0] == b[0] else ''
@@ -48,5 +48,7 @@ for i in range(2, len(a)):
 
 
 ans = dp[len(a) - 1][len(b) - 1]
+
+ans.replace(' ', '')
 
 print(ans)

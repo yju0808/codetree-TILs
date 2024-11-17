@@ -7,7 +7,7 @@ a = 'X' + a
 b = 'X' + b
 
 dp = [[0 for _ in range(len(b))] for _ in range(len(a))]
-dp[1][1] = 1 if a[0] == b[0] else 0
+dp[1][1] = 1 if a[1] == b[1] else 0
 
 
 for i in range(1, len(a)):

@@ -33,7 +33,7 @@ for i in range(1, len(a)):
 
 for i in range(1, len(b)):
     if a[1] == b[i]:
-        dp[1][i] = a[i]
+        dp[1][i] = b[i]
     else:
         dp[1][i] = dp[1][i - 1]
 

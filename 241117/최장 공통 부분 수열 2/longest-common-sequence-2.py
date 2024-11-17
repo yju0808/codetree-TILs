@@ -21,7 +21,7 @@ def get_max_str(arr):
             max_i = i
 
 
-    return arr[i]
+    return arr[max_i]
 
 
 for i in range(1, len(a)):
@@ -48,7 +48,5 @@ for i in range(2, len(a)):
 
 
 ans = dp[len(a) - 1][len(b) - 1]
-
-ans.replace(' ', '')
 
 print(ans)

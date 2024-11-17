@@ -27,6 +27,7 @@ def get_max_str(arr):
                 if arr[i][j] < arr[max_i][j]:
                     max_len = len(arr[i])
                     max_i = i
+                    break
 
 
     return copy.deepcopy(arr[max_i])

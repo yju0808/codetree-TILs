@@ -9,7 +9,7 @@ a.insert(0, 0)
 b.insert(0, 0)
 
 dp = [[[] for _ in range(len(b))] for _ in range(len(a))]
-dp[1][1] = a[1] if a[1] == b[1] else []
+dp[1][1] = [a[1]] if a[1] == b[1] else []
 
 
 def get_max_str(arr):

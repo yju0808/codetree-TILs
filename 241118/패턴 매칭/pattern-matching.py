@@ -20,8 +20,12 @@ for i in range(len(s)):
                 dp[i][j] = True
 
 
+ans = 'false'
 
+for i in range(len(p)):
+    if dp[len(s) - 1][i] :
+        ans = 'true'
 
     
-print('true' if dp[len(s) - 1][len(p) - 1] else 'false')
+print('true')
 

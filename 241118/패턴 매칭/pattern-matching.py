@@ -27,5 +27,5 @@ for i in range(len(p)):
         ans = 'true'
 
     
-print('true')
+print(ans)
 

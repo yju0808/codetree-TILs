@@ -6,7 +6,7 @@ pt = [1] * (n + 1)
 for i in range(1, n + 1):
     pt[i] = pt[i - 1] * 10 % MOD
 
-dp = [[0] * 3 for _ in range(n + 1)]
+dp = [[0 for _ in range(3)] for _ in range(n + 1)]
 ans = 0
 is_369 = False
 digit_sum = 0

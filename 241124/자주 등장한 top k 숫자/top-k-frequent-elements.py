@@ -17,12 +17,14 @@ for key, value in d.items():
 
     result.append((key, value))
 
-    i+= 1
-    if i == k:
-        break
-
 result.sort(lambda x: (-x[1], -x[0]))
+
+i = 0
 
 for key, value in result:
     print(key, end= ' ')
+
+    i += 1
+    if i == k:
+        break
 

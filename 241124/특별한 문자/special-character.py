@@ -9,14 +9,15 @@ for c in s:
     else:
         d[c] = 1
 
+ans = 'None'
 
 for c in s:
     if d[c] == 1:
-        print(c)
+        ans = c
         break
 
 
-
+print(ans)
 
 
 

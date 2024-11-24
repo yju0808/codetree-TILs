@@ -14,27 +14,15 @@ for n in nums:
         d[n] = 1
 
 for i in range(len(nums)):
-    for j in range(i + 1, len(nums)):
 
-        n1 = nums[i]
-        n2 = nums[j]
+    d[nums[i]] -= 1
 
-        target = k - (n1 + n2)
+    for j in range(i):
+
+        target = k - (nums[i] + nums[j])
 
         if target in d:
-
-            count = d[target]
-
-            if target == n1:
-                count -= 1
-            
-            if target == n2:
-                count -= 1
-
-            if count > 0:
-                ans += count
-                d[n1] -= 1
-                d[n2] -= 1
+            ans += d[target]
                 
 
 

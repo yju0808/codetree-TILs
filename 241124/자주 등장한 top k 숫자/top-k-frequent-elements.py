@@ -21,7 +21,7 @@ for key, value in d.items():
     if i == k:
         break
 
-result.sort(lambda x: (x[1], -x[0]))
+result.sort(lambda x: (-x[1], -x[0]))
 
 for key, value in result:
     print(key, end= ' ')

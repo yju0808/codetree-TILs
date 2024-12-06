@@ -13,5 +13,7 @@ nums = list(map(int, input().split()))
 for n in nums:
     s.add(n)
 
+length = len(s)
+
 for i in range(0, m):
-    print(s[len(s) - i])
+    print(s[length - i - 1], end = ' ')

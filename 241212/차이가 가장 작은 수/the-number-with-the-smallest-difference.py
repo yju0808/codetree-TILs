@@ -16,7 +16,7 @@ for i in nums:
 
     target = m + i
 
-    index = s.bisect_right(target)
+    index = s.bisect_left(target)
 
     if not (0 <= index < len(s)):
         continue

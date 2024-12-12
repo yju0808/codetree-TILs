@@ -14,19 +14,14 @@ ans = float('inf')
 
 for i in nums:
 
-    index = s.bisect_right(i)
+    target = m + i
 
-    for j in range(3):
+    index = s.bisect_right(target)
 
-        index += j
+    if not (0 <= index < len(s)):
+        continue
 
-        if not (0 <= index < len(s)):
-            continue
-
-        if abs(s[index] - i) >= m:
-            ans = min(ans, abs(s[index] - i))
-            break
-
+    ans = min(ans, abs(i - s[index]))
 
 print(ans if ans != float('inf') else -1)
 

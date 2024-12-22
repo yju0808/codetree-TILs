@@ -10,18 +10,18 @@ nums = list(map(int, input().split()))
 for n in nums:
     hq.heappush(min_heap, -n)
 
-    while len(min_heap) >= 2:
+while len(min_heap) >= 2:
 
-        first = -hq.heappop(min_heap)
-            second = -hq.heappop(min_heap)
+    first = -hq.heappop(min_heap)
+    second = -hq.heappop(min_heap)
 
-                new = first - second
+    new = first - second
 
-                    if new:
-                            hq.heappush(min_heap, - new)
+    if new:
+        hq.heappush(min_heap, - new)
 
 
-                            if min_heap:
-                                print(-min_heap[0])
-                                else:
-                                    print(-1)
+if min_heap:
+    print(-min_heap[0])
+else:
+    print(-1)

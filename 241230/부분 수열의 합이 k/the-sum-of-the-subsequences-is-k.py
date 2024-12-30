@@ -11,8 +11,8 @@ for i in range(1, n):
     prefix_sum[i] = prefix_sum[i - 1] + arr[i]
 
 
-for i in range(n - 1):
-    for j in range(i + 1, n):
+for i in range(n):
+    for j in range(i, n):
         temp = prefix_sum[j] - prefix_sum[i]  + arr[i]
 
         if temp == k:

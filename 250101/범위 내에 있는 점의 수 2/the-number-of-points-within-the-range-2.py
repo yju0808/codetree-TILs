@@ -1,8 +1,8 @@
-
+MAX = 1000001
 n, q = map(int, input().split())
 
-line = [0 for _ in range(100001)]
-prefix_sum = [0 for _ in range(100001)]
+line = [0 for _ in range(MAX)]
+prefix_sum = [0 for _ in range(MAX)]
 
 
 points = list(map(int, input().split()))
@@ -13,7 +13,7 @@ for p in points:
 
 prefix_sum[0] = line[0]
 
-for i in range(1, 100001):
+for i in range(1, MAX):
     prefix_sum[i] = prefix_sum[i - 1] + line[i]
 
 

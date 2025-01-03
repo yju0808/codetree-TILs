@@ -4,7 +4,7 @@ line = [0 for _ in range(MAX)]
 
 for _ in range(n):
     x1, x2 = map(int, input().split())
-    line[x1] += 1
+    line[x1 + 1] += 1
     line[x2] -= 1
 
 ans = 0

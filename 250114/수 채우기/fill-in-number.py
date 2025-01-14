@@ -7,7 +7,7 @@ current_n = n
 
 for i in range(n):
 
-    if current_n == 0:
+    if current_n <=  0:
         break
 
     if current_n % 5 == 0:
@@ -18,4 +18,4 @@ for i in range(n):
         count += 1
         current_n -= 2
 
-print(count)
+print(count if current_n >= 0 else -1)

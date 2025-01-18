@@ -10,7 +10,7 @@ ans = 0
 
 for p, t in bombs:
 
-    if t >= time:
+    if t >= time + 1:
         ans += p
         time = t + 1
 
